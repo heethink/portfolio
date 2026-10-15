@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="개인 포트폴리오 웹사이트">
+  <title>Portfolio | 모던 개인 포트폴리오</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;500;600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Navigation Header -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">HeeThink<span>.dev</span></a>
+      
+      <nav class="nav-menu" id="nav-menu">
+        <a href="#about" class="nav-link">소개</a>
+        <a href="#skills" class="nav-link">기술 스택</a>
+        <a href="#projects" class="nav-link">프로젝트</a>
+        <a href="#experience" class="nav-link">경험</a>
+        <a href="#contact" class="nav-link">연락처</a>
+      </nav>
+
+      <div class="nav-actions">
+        <button id="theme-toggle" class="theme-btn" aria-label="테마 전환">
+          <span class="theme-icon">🌙</span>
+        </button>
+        <button id="mobile-toggle" class="mobile-toggle" aria-label="메뉴 열기">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero Section -->
+    <section id="hero" class="hero section">
+      <div class="container hero-container">
+        <div class="hero-badge">👋 안녕하세요! 끊임없이 성장하는 개발자입니다.</div>
+        <h1 class="hero-title">
+          사용자에게 가치를 전하는<br>
+          <span class="gradient-text">창의적인 솔루션</span>을 만듭니다.
+        </h1>
+        <p class="hero-desc">
+          복잡한 문제를 직관적이고 깔끔한 코드로 해결하는 것을 즐깁니다. 새로운 기술 탐색과 사용자 경험 최적화에 깊은 관심을 가지고 있습니다.
+        </p>
+        <div class="hero-cta">
+          <a href="#projects" class="btn btn-primary">프로젝트 둘러보기</a>
+          <a href="#contact" class="btn btn-outline">연락하기</a>
+        </div>
+        <div class="hero-socials">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="social-link" title="GitHub">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+            <span>GitHub</span>
+          </a>
+          <a href="mailto:contact@example.com" class="social-link" title="Email">
+            <svg width="20" height="20" fill="currentColor" viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <span>Email</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">ABOUT ME</span>
+          <h2 class="section-title">기본에 충실하며 문제를 해결합니다</h2>
+        </div>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              안녕하세요! 기술을 통해 사용자의 일상을 조금 더 편리하고 즐겁게 만드는 개발자입니다.
+              단순한 코드 구현을 넘어, 유지보수가 용이하고 확장 가능한 아키텍처를 고민합니다.
+            </p>
+            <p>
+              협업과 커뮤니케이션을 중요하게 생각하며, 팀원들과 적극적으로 지식을 공유하고 새로운 도전을 두려워하지 않습니다.
+            </p>
+            <div class="about-highlights">
+              <div class="highlight-item">
+                <span class="highlight-number">3+</span>
+                <span class="highlight-label">진행한 프로젝트</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-number">100%</span>
+                <span class="highlight-label">열정과 책임감</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-number">Agile</span>
+                <span class="highlight-label">빠른 학습 및 적용</span>
+              </div>
+            </div>
+          </div>
+          <div class="about-card">
+            <h3>핵심 가치</h3>
+            <ul class="value-list">
+              <li>
+                <strong>🎯 직관적인 사용자 경험</strong>
+                <span>모든 기능 개발의 중심에는 사용자가 있습니다.</span>
+              </li>
+              <li>
+                <strong>🧼 깨끗하고 견고한 코드</strong>
+                <span>가독성과 확장성을 고려한 코드를 작성합니다.</span>
+              </li>
+              <li>
+                <strong>🚀 지속적인 학습과 성장</strong>
+                <span>빠르게 변화하는 웹 생태계에 유연하게 적응합니다.</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="skills section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">SKILLS & TOOLS</span>
+          <h2 class="section-title">활용 가능한 기술 스택</h2>
+        </div>
+        <div class="skills-grid">
+          <div class="skill-category">
+            <h3 class="category-title">🎨 Frontend</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">HTML5 / CSS3</span>
+              <span class="skill-tag">JavaScript (ES6+)</span>
+              <span class="skill-tag">TypeScript</span>
+              <span class="skill-tag">React</span>
+              <span class="skill-tag">Next.js</span>
+              <span class="skill-tag">Tailwind CSS</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3 class="category-title">⚙️ Backend & DB</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Node.js</span>
+              <span class="skill-tag">Express</span>
+              <span class="skill-tag">Python</span>
+              <span class="skill-tag">PostgreSQL</span>
+              <span class="skill-tag">MongoDB</span>
+            </div>
+          </div>
+          <div class="skill-category">
+            <h3 class="category-title">🛠️ Tools & DevOps</h3>
+            <div class="skill-tags">
+              <span class="skill-tag">Git / GitHub</span>
+              <span class="skill-tag">GitHub Actions</span>
+              <span class="skill-tag">Docker</span>
+              <span class="skill-tag">VS Code</span>
+              <span class="skill-tag">Figma</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="projects section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">PROJECTS</span>
+          <h2 class="section-title">주요 프로젝트</h2>
+        </div>
+        <div class="projects-grid">
+          <!-- Project 1 -->
+          <article class="project-card">
+            <div class="project-badge">Featured</div>
+            <div class="project-content">
+              <h3 class="project-title">스마트 일정 & 태스크 매니저</h3>
+              <p class="project-desc">
+                드래그 앤 드롭으로 일정을 유연하게 관리하고 실시간 알림을 제공하는 반응형 웹 생산성 도구입니다.
+              </p>
+              <div class="project-tags">
+                <span>React</span>
+                <span>TypeScript</span>
+                <span>Tailwind CSS</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">GitHub</a>
+                <a href="#contact" class="link-btn primary">상세보기</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 2 -->
+          <article class="project-card">
+            <div class="project-badge">Web App</div>
+            <div class="project-content">
+              <h3 class="project-title">실시간 협업 마크다운 에디터</h3>
+              <p class="project-desc">
+                WebSocket 기반으로 여러 명이 동시에 문서를 작성하고 라이브 미리보기를 지원하는 클라우드 노트 서비스입니다.
+              </p>
+              <div class="project-tags">
+                <span>Node.js</span>
+                <span>Socket.io</span>
+                <span>JavaScript</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">GitHub</a>
+                <a href="#contact" class="link-btn primary">상세보기</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Project 3 -->
+          <article class="project-card">
+            <div class="project-badge">Landing Page</div>
+            <div class="project-content">
+              <h3 class="project-title">AI 서비스 브랜딩 랜딩 페이지</h3>
+              <p class="project-desc">
+                다크모드 지원, 부드러운 스크롤 인터랙션, 모바일 최적화를 적용한 고성능 SaaS 프로모션 사이트입니다.
+              </p>
+              <div class="project-tags">
+                <span>HTML5 / CSS3</span>
+                <span>Vanilla JS</span>
+                <span>SEO</span>
+              </div>
+              <div class="project-links">
+                <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="link-btn">GitHub</a>
+                <a href="#contact" class="link-btn primary">상세보기</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="experience section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">EXPERIENCE</span>
+          <h2 class="section-title">경험 및 이력</h2>
+        </div>
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2025 - 현재</div>
+            <div class="timeline-content">
+              <h3>개인 프로젝트 & 오픈소스 활동</h3>
+              <p class="timeline-role">Front-end Developer</p>
+              <p>웹 표준과 성능 최적화에 중점을 둔 다양한 웹 애플리케이션 개발 및 학습 진행.</p>
+            </div>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2024</div>
+            <div class="timeline-content">
+              <h3>웹 개발 부트캠프 / 스터디</h3>
+              <p class="timeline-role">Software Engineering</p>
+              <p>모던 자바스크립트 생태계 심화 학습, 팀 프로젝트를 통한 애자일 협업 프로세스 경험.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">CONTACT</span>
+          <h2 class="section-title">함께 이야기 나눠봐요</h2>
+        </div>
+        <div class="contact-wrapper">
+          <div class="contact-info">
+            <p>
+              새로운 프로젝트 제안, 협업 문의, 또는 편안한 인사 모두 환영합니다. 언제든 편하게 메시지를 남겨주세요!
+            </p>
+            <div class="contact-details">
+              <div class="contact-item">
+                <span class="icon">📍</span>
+                <span>대한민국 (Seoul, South Korea)</span>
+              </div>
+              <div class="contact-item">
+                <span class="icon">✉️</span>
+                <span>heethink@example.com</span>
+              </div>
+              <div class="contact-item">
+                <span class="icon">⚡</span>
+                <span>빠른 피드백 & 열린 대화 지향</span>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form" id="contact-form">
+            <div class="form-group">
+              <label for="name">이름 / 회사명</label>
+              <input type="text" id="name" name="name" required placeholder="홍길동">
+            </div>
+            <div class="form-group">
+              <label for="email">이메일 주소</label>
+              <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+            </div>
+            <div class="form-group">
+              <label for="message">메시지 내용</label>
+              <textarea id="message" name="message" rows="4" required placeholder="문의하실 내용을 자유롭게 적어주세요."></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">메시지 전송하기</button>
+            <div id="form-status" class="form-status"></div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer-container">
+      <p>© <span id="current-year"></span> HeeThink. All rights reserved.</p>
+      <a href="#hero" class="back-to-top">맨 위로 가기 ↑</a>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
