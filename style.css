@@ -247,16 +247,38 @@ body.theme-dark .btn-pill-primary {
 .mobile-menu-btn {
   display: none;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   gap: 5px;
-  padding: 6px;
+  width: 38px;
+  height: 38px;
+  padding: 8px;
+  border-radius: 9999px;
+  border: 1px solid var(--border-line);
+  background: var(--bg-surface);
+  cursor: pointer;
+  transition: all 0.2s ease;
 }
 
 .mobile-menu-btn span {
   display: block;
-  width: 22px;
+  width: 18px;
   height: 2px;
   background-color: var(--text-main);
-  transition: 0.2s ease;
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  transform-origin: center;
+}
+
+.mobile-menu-btn.active span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
 }
 
 /* ==========================================================================
@@ -1534,11 +1556,23 @@ body.theme-dark .btn-pill-primary {
   .metric-num {
     font-size: 2rem;
   }
+
+  .instructor-profile-card {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+    padding: 2.5rem 2rem;
+  }
+  
+  .instructor-portrait-box {
+    max-width: 280px;
+    margin: 0 auto;
+  }
 }
 
 @media (max-width: 768px) {
   .header-container {
     height: 64px;
+    padding: 0 1.25rem;
   }
 
   .mobile-menu-btn {
@@ -1552,87 +1586,122 @@ body.theme-dark .btn-pill-primary {
     left: 0;
     right: 0;
     background: var(--bg-surface);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
     border-bottom: 1px solid var(--border-line);
     flex-direction: column;
-    padding: 1.5rem;
+    padding: 1.25rem 1.25rem 1.5rem;
     gap: 0.5rem;
-    box-shadow: var(--shadow-card);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    z-index: 99;
   }
   
   .nav-links.active {
     display: flex;
+    animation: slideDownNav 0.22s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes slideDownNav {
+    from {
+      opacity: 0;
+      transform: translateY(-8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .nav-item {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 10px;
   }
 
   /* Mobile Hero Viewport Padding & Hierarchy */
   .hero-coremate {
-    padding: 5.5rem 1.25rem 4rem;
+    padding: 4.5rem 1.25rem 3.5rem;
     min-height: auto;
   }
 
   .hero-pill-badge {
-    font-size: 0.82rem;
-    padding: 0.45rem 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .hero-headline {
-    font-size: 2.15rem;
-    line-height: 1.28;
-    letter-spacing: -0.6px;
-    word-break: keep-all;
+    font-size: 0.8rem;
+    padding: 0.4rem 0.95rem;
     margin-bottom: 1.25rem;
   }
 
+  .hero-headline {
+    font-size: clamp(1.75rem, 5.8vw, 2.25rem);
+    line-height: 1.3;
+    letter-spacing: -0.6px;
+    word-break: keep-all;
+    margin-bottom: 1rem;
+  }
+
   .hero-subline {
-    font-size: 1.05rem;
+    font-size: 0.98rem;
     line-height: 1.65;
     word-break: keep-all;
     overflow-wrap: break-word;
-    text-wrap: balance;
-    margin-bottom: 2rem;
+    max-width: 480px;
+    margin-bottom: 1.75rem;
   }
 
   .hero-action-row {
     flex-direction: column;
     width: 100%;
     max-width: 320px;
-    gap: 0.75rem;
-    margin-bottom: 2.5rem;
+    gap: 0.65rem;
+    margin-bottom: 2.25rem;
   }
 
   .btn-hero-primary,
   .btn-hero-ghost {
     width: 100%;
     justify-content: center;
-    padding: 0.85rem 1.5rem;
+    min-height: 48px;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
   }
 
-  /* Enlarge & Stack Impact Metrics on Mobile */
+  /* Compact 3-Column Stats Dashboard on Mobile */
   .hero-metrics-pill {
-    grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
     width: 100%;
-    max-width: 380px;
-    padding: 1.5rem 1.25rem;
-    gap: 1.25rem;
-    border-radius: 18px;
+    max-width: 440px;
+    padding: 1.15rem 0.65rem;
+    gap: 0.4rem;
+    border-radius: 16px;
+  }
+
+  .metric-segment {
+    padding: 0 0.35rem;
   }
 
   .metric-segment:not(:last-child)::after {
-    display: none;
+    display: block;
+    right: 0;
+    height: 55%;
   }
 
   .metric-segment:not(:last-child) {
-    padding-bottom: 1.25rem;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+    padding-bottom: 0;
+    border-bottom: none;
   }
 
   .metric-num {
-    font-size: 2.1rem;
-    margin-bottom: 0.25rem;
+    font-size: clamp(1.25rem, 4.4vw, 1.65rem);
+    margin-bottom: 0.2rem;
   }
 
   .metric-text {
-    font-size: 0.88rem;
+    font-size: clamp(0.7rem, 2.3vw, 0.78rem);
+    line-height: 1.25;
+    word-break: keep-all;
   }
 
   /* Section Spacing & Card Padding */
@@ -1641,31 +1710,83 @@ body.theme-dark .btn-pill-primary {
   .about-section,
   .faq-section,
   .contact-section {
-    padding: 4.5rem 0;
+    padding: 4.25rem 0;
   }
 
   .section-h2 {
-    font-size: 1.85rem;
-    line-height: 1.3;
+    font-size: 1.8rem;
+    line-height: 1.32;
+    word-break: keep-all;
   }
 
   .section-desc {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.6;
+    word-break: keep-all;
   }
 
+  /* Programs 1-Column */
   .services-grid {
     grid-template-columns: 1fr;
     gap: 1.25rem;
   }
 
   .service-box {
-    padding: 1.75rem 1.25rem;
+    padding: 1.6rem 1.25rem;
+    border-radius: 16px;
+  }
+
+  .service-box h3 {
+    font-size: 1.2rem;
+    line-height: 1.35;
+    word-break: keep-all;
+  }
+
+  .service-box p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  .service-features li {
+    font-size: 0.84rem;
+    line-height: 1.5;
+  }
+
+  .case-link-action {
+    font-size: 0.88rem;
+    min-height: 44px;
+    align-items: center;
   }
 
   .section-top-row {
     flex-direction: column;
     align-items: flex-start;
     gap: 1.25rem;
+  }
+
+  /* Field Categories: Smooth Horizontal Swipe Pill Bar */
+  .field-tag-cloud {
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    gap: 0.5rem;
+    padding-bottom: 0.65rem;
+    margin-top: 1.25rem;
+    margin-bottom: 1.75rem;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+  }
+
+  .field-tag-cloud::-webkit-scrollbar {
+    display: none;
+  }
+
+  .field-tag-pill {
+    flex-shrink: 0;
+    white-space: nowrap;
+    font-size: 0.82rem;
+    padding: 0.45rem 0.85rem;
   }
 
   .case-grid {
@@ -1677,23 +1798,189 @@ body.theme-dark .btn-pill-primary {
     padding: 1.25rem;
   }
 
-  .about-card-banner {
-    padding: 2rem 1.25rem;
+  .case-title {
+    font-size: 1.15rem;
+    word-break: keep-all;
+  }
+
+  .case-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    word-break: keep-all;
+  }
+
+  /* Instructor Profile Mobile */
+  .instructor-profile-card {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    padding: 1.75rem 1.25rem;
+    border-radius: 20px;
+  }
+
+  .instructor-portrait-box {
+    max-width: 250px;
+    margin: 0 auto;
     border-radius: 16px;
   }
 
-  .about-text-area h2 {
-    font-size: 1.55rem;
-    line-height: 1.35;
+  .instructor-quick-stats {
+    padding: 0.85rem 0.5rem;
   }
 
+  .q-stat-num {
+    font-size: 1.35rem;
+  }
+
+  .q-stat-label {
+    font-size: 0.75rem;
+  }
+
+  .philosophy-quote-block {
+    padding: 1.15rem 1.2rem;
+    border-radius: 12px;
+  }
+
+  .philosophy-quote-text {
+    font-size: 0.95rem;
+    line-height: 1.55;
+    word-break: keep-all;
+  }
+
+  .instructor-intro-text {
+    font-size: 0.92rem;
+    line-height: 1.65;
+    word-break: keep-all;
+  }
+
+  .inst-skill-tags {
+    gap: 0.4rem;
+  }
+
+  .inst-tag {
+    font-size: 0.78rem;
+    padding: 0.35rem 0.7rem;
+  }
+
+  .inst-history-list li {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    padding-left: 1.15rem;
+    word-break: keep-all;
+  }
+
+  .instructor-action-row {
+    flex-direction: column;
+    width: 100%;
+    gap: 0.65rem;
+  }
+
+  .instructor-action-row a {
+    width: 100%;
+    justify-content: center;
+    min-height: 46px;
+    padding: 0.85rem 1rem;
+  }
+
+  /* FAQ Mobile */
+  .faq-question {
+    padding: 1.2rem 1.25rem;
+    font-size: 0.98rem;
+    gap: 0.75rem;
+    min-height: 52px;
+    word-break: keep-all;
+  }
+
+  .faq-answer {
+    padding: 0 1.25rem;
+  }
+
+  .faq-item.active .faq-answer {
+    padding-bottom: 1.25rem;
+  }
+
+  .faq-answer p {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    word-break: keep-all;
+  }
+
+  /* Contact Card Mobile */
   .contact-card {
-    padding: 2rem 1.25rem;
-    border-radius: 16px;
+    padding: 1.75rem 1.25rem;
+    gap: 2.25rem;
+    border-radius: 20px;
+  }
+
+  .contact-info-col h2 {
+    font-size: 1.7rem;
+  }
+
+  .contact-info-col p {
+    font-size: 0.95rem;
+    margin-bottom: 1.75rem;
+    word-break: keep-all;
+  }
+
+  .direct-contacts {
+    gap: 1.15rem;
+  }
+
+  .d-item {
+    gap: 0.85rem;
+  }
+
+  .d-icon {
+    width: 38px;
+    height: 38px;
+  }
+
+  .d-item strong {
+    font-size: 0.88rem;
+  }
+
+  .d-item span {
+    font-size: 0.84rem;
+  }
+
+  /* iOS Safari Auto-Zoom Prevention */
+  .field input,
+  .field select,
+  .field textarea {
+    font-size: 16px;
+    padding: 0.85rem 0.95rem;
+    border-radius: 10px;
+  }
+
+  .btn-submit {
+    width: 100%;
+    min-height: 50px;
+    padding: 1rem;
+    font-size: 1rem;
+    justify-content: center;
+  }
+
+  /* Footer Mobile */
+  .footer {
+    padding: 2.5rem 0;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.25rem;
+  }
+
+  .footer-copy {
+    font-size: 0.82rem;
+    word-break: keep-all;
   }
 }
 
 @media (max-width: 480px) {
+  .section-container {
+    padding: 0 1rem;
+  }
+
   .header-container {
     padding: 0 1rem;
     height: 60px;
@@ -1701,6 +1988,7 @@ body.theme-dark .btn-pill-primary {
 
   .nav-links {
     top: 60px;
+    padding: 1rem;
   }
 
   .brand-logo {
@@ -1714,36 +2002,83 @@ body.theme-dark .btn-pill-primary {
   }
 
   .header-actions {
-    gap: 0.5rem;
+    gap: 0.4rem;
   }
 
   .header-actions .btn-pill {
-    padding: 0.4rem 0.85rem;
-    font-size: 0.82rem;
-  }
-
-  .hero-coremate {
-    padding: 4.75rem 1rem 3.5rem;
+    padding: 0.35rem 0.75rem;
+    font-size: 0.78rem;
   }
 
   .hero-headline {
-    font-size: 1.85rem;
+    font-size: 1.7rem;
+    line-height: 1.28;
   }
 
   .hero-subline {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
   }
 
   .hero-metrics-pill {
-    padding: 1.2rem 1rem;
-    gap: 1rem;
+    padding: 1rem 0.4rem;
+    gap: 0.25rem;
   }
 
   .metric-num {
-    font-size: 1.85rem;
+    font-size: 1.35rem;
   }
 
   .metric-text {
+    font-size: 0.68rem;
+  }
+
+  .section-h2 {
+    font-size: 1.55rem;
+    line-height: 1.32;
+  }
+
+  .section-desc {
+    font-size: 0.88rem;
+  }
+
+  .service-box {
+    padding: 1.35rem 1.1rem;
+  }
+
+  .service-box h3 {
+    font-size: 1.15rem;
+  }
+
+  .service-features li {
+    font-size: 0.84rem;
+  }
+
+  .contact-card {
+    padding: 1.5rem 1rem;
+  }
+
+  .contact-info-col h2 {
+    font-size: 1.5rem;
+  }
+
+  .contact-info-col p {
+    font-size: 0.9rem;
+  }
+
+  .d-item {
+    gap: 0.75rem;
+  }
+
+  .d-icon {
+    width: 36px;
+    height: 36px;
+  }
+
+  .d-item strong {
+    font-size: 0.85rem;
+  }
+
+  .d-item span {
     font-size: 0.82rem;
   }
 }

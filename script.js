@@ -69,11 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
   if (mobileMenuBtn && navMenu) {
     mobileMenuBtn.addEventListener('click', () => {
       navMenu.classList.toggle('active');
+      mobileMenuBtn.classList.toggle('active');
     });
 
     navLinks.forEach((link) => {
       link.addEventListener('click', () => {
         navMenu.classList.remove('active');
+        mobileMenuBtn.classList.remove('active');
       });
     });
   }
