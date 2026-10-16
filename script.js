@@ -156,4 +156,131 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 700);
     });
   }
+
+  /* ==========================================================================
+     Case Field Single Scene Slider (Carousel)
+     ========================================================================== */
+  const caseTrack = document.getElementById('case-slider-track');
+  const caseSlides = document.querySelectorAll('.case-slide-item');
+  const prevBtns = [document.getElementById('case-prev-btn'), document.getElementById('case-side-prev')];
+  const nextBtns = [document.getElementById('case-next-btn'), document.getElementById('case-side-next')];
+  const currentNumEl = document.getElementById('case-current-num');
+  const totalNumEl = document.getElementById('case-total-num');
+  const dotBtns = document.querySelectorAll('.case-dot-btn');
+  const categoryPills = document.querySelectorAll('#case-category-tabs .field-tag-pill');
+
+  let currentSlideIndex = 0;
+  const totalSlidesCount = caseSlides.length;
+
+  if (totalNumEl && totalSlidesCount > 0) {
+    totalNumEl.textContent = String(totalSlidesCount).padStart(2, '0');
+  }
+
+  function updateSlider(index) {
+    if (!caseTrack || totalSlidesCount === 0) return;
+
+    // Normalize index with looping
+    if (index < 0) {
+      currentSlideIndex = totalSlidesCount - 1;
+    } else if (index >= totalSlidesCount) {
+      currentSlideIndex = 0;
+    } else {
+      currentSlideIndex = index;
+    }
+
+    // Move track smoothly
+    caseTrack.style.transform = `translateX(-${currentSlideIndex * 100}%)`;
+
+    // Update Counter Number
+    if (currentNumEl) {
+      currentNumEl.textContent = String(currentSlideIndex + 1).padStart(2, '0');
+    }
+
+    // Update Bottom Dots
+    dotBtns.forEach((dot, idx) => {
+      dot.classList.toggle('active', idx === currentSlideIndex);
+    });
+
+    // Update Top Category Pills
+    categoryPills.forEach((pill) => {
+      const targetIdx = parseInt(pill.getAttribute('data-slide-index'), 10);
+      pill.classList.toggle('active', targetIdx === currentSlideIndex);
+    });
+  }
+
+  // Prev / Next Button Listeners
+  prevBtns.forEach((btn) => {
+    if (btn) {
+      btn.addEventListener('click', () => {
+        updateSlider(currentSlideIndex - 1);
+      });
+    }
+  });
+
+  nextBtns.forEach((btn) => {
+    if (btn) {
+      btn.addEventListener('click', () => {
+        updateSlider(currentSlideIndex + 1);
+      });
+    }
+  });
+
+  // Dots Listeners
+  dotBtns.forEach((dot) => {
+    dot.addEventListener('click', () => {
+      const targetIdx = parseInt(dot.getAttribute('data-slide-index'), 10);
+      updateSlider(targetIdx);
+    });
+  });
+
+  // Category Pills Listeners
+  categoryPills.forEach((pill) => {
+    pill.addEventListener('click', () => {
+      const targetIdx = parseInt(pill.getAttribute('data-slide-index'), 10);
+      updateSlider(targetIdx);
+    });
+  });
+
+  // Touch Swipe for Mobile
+  const sliderViewport = document.getElementById('case-slider-viewport');
+  if (sliderViewport) {
+    let startX = 0;
+    let endX = 0;
+
+    sliderViewport.addEventListener('touchstart', (e) => {
+      startX = e.touches[0].clientX;
+    }, { passive: true });
+
+    sliderViewport.addEventListener('touchend', (e) => {
+      endX = e.changedTouches[0].clientX;
+      const diffX = startX - endX;
+
+      if (Math.abs(diffX) > 40) {
+        if (diffX > 0) {
+          // Swiped Left -> Next Slide
+          updateSlider(currentSlideIndex + 1);
+        } else {
+          // Swiped Right -> Prev Slide
+          updateSlider(currentSlideIndex - 1);
+        }
+      }
+    }, { passive: true });
+  }
+
+  // Keyboard Navigation when cases section is in view
+  window.addEventListener('keydown', (e) => {
+    const casesSection = document.getElementById('cases');
+    if (!casesSection) return;
+
+    const rect = casesSection.getBoundingClientRect();
+    const isVisible = rect.top < window.innerHeight && rect.bottom > 0;
+
+    if (isVisible) {
+      if (e.key === 'ArrowLeft') {
+        updateSlider(currentSlideIndex - 1);
+      } else if (e.key === 'ArrowRight') {
+        updateSlider(currentSlideIndex + 1);
+      }
+    }
+  });
 });

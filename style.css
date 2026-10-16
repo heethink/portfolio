@@ -689,36 +689,235 @@ body.theme-dark .btn-pill-primary {
   transform: translateY(-1px);
 }
 
-.case-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-  gap: 2rem;
+/* ==========================================================================
+   Cases Single Scene Slider Styles
+   ========================================================================== */
+.case-header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
 }
 
-.case-card {
+.case-counter-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  padding: 0.45rem 0.95rem;
+  border-radius: 9999px;
+  font-family: monospace;
+  font-size: 0.92rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.case-counter-badge .current-num {
+  font-weight: 800;
+  font-size: 1.05rem;
+  color: var(--brand-blue);
+}
+
+.case-counter-badge .divider {
+  color: var(--text-subtle);
+  font-weight: 500;
+}
+
+.case-counter-badge .total-num {
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.case-nav-btn-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.case-arrow-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 9999px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-line);
+  color: var(--text-main);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  box-shadow: var(--shadow-sm);
+}
+
+.case-arrow-btn:hover {
+  background: var(--brand-blue);
+  color: #ffffff;
+  border-color: var(--brand-blue);
+  transform: scale(1.06);
+}
+
+.case-arrow-btn:active {
+  transform: scale(0.96);
+}
+
+/* Slider Container & Track */
+.case-slider-container {
+  position: relative;
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.case-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.case-slider-track {
+  display: flex;
+  width: 100%;
+  transition: transform 0.45s cubic-bezier(0.25, 1, 0.5, 1);
+  touch-action: pan-y;
+}
+
+.case-slide-item {
+  flex: 0 0 100%;
+  width: 100%;
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+.case-slide-card {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
   background: var(--bg-card);
   border: 1px solid var(--border-line);
-  border-radius: 18px;
+  border-radius: 24px;
   overflow: hidden;
   box-shadow: var(--shadow-card);
-  display: flex;
-  flex-direction: column;
-  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: border-color 0.25s ease;
 }
 
-.case-card:hover {
-  transform: translateY(-5px);
-  border-color: rgba(47, 91, 224, 0.4);
-  box-shadow: var(--shadow-hover);
+.case-slide-card:hover {
+  border-color: rgba(47, 91, 224, 0.35);
 }
 
-/* 16:9 Thumbnail Box */
-.case-thumb-box {
+.case-slide-card .case-thumb-box {
   position: relative;
   aspect-ratio: 16 / 9;
   width: 100%;
+  height: 100%;
+  min-height: 380px;
   overflow: hidden;
   background-color: var(--ink-950);
+}
+
+.case-slide-card .case-info {
+  padding: 2.75rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.case-slide-card .case-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  line-height: 1.35;
+  letter-spacing: -0.4px;
+  margin-bottom: 1rem;
+  word-break: keep-all;
+}
+
+.case-slide-card .case-summary {
+  font-size: 0.98rem;
+  line-height: 1.68;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+  word-break: keep-all;
+}
+
+.case-slide-card .case-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  margin-top: 0.5rem;
+  border-top: 1px solid var(--border-line-subtle);
+}
+
+.case-slide-card .case-stat {
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--brand-blue);
+}
+
+/* Side Floating Arrow Buttons */
+.side-nav-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 9999px;
+  background: rgba(15, 23, 42, 0.75);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
+}
+
+.side-nav-arrow.prev {
+  left: 1.25rem;
+}
+
+.side-nav-arrow.next {
+  right: 1.25rem;
+}
+
+.side-nav-arrow:hover {
+  background: var(--brand-blue);
+  border-color: var(--brand-blue);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.side-nav-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+/* Bottom Dot Indicators */
+.case-dots-bar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  margin-top: 2rem;
+}
+
+.case-dot-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 9999px;
+  background: var(--border-line);
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 0;
+}
+
+.case-dot-btn:hover {
+  background: var(--text-muted);
+}
+
+.case-dot-btn.active {
+  width: 38px;
+  background: var(--brand-blue);
+  border-radius: 9999px;
 }
 
 .case-img {
@@ -1789,24 +1988,41 @@ body.theme-dark .btn-pill-primary {
     padding: 0.45rem 0.85rem;
   }
 
-  .case-grid {
+  .case-header-controls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    margin-top: 0.75rem;
+  }
+
+  .case-slide-card {
     grid-template-columns: 1fr;
-    gap: 1.5rem;
   }
 
-  .case-content {
-    padding: 1.25rem;
+  .case-slide-card .case-thumb-box {
+    min-height: auto;
   }
 
-  .case-title {
-    font-size: 1.15rem;
+  .case-slide-card .case-info {
+    padding: 1.6rem 1.25rem;
+  }
+
+  .case-slide-card .case-title {
+    font-size: 1.2rem;
+    line-height: 1.35;
     word-break: keep-all;
   }
 
-  .case-desc {
-    font-size: 0.88rem;
-    line-height: 1.55;
+  .case-slide-card .case-summary {
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 1.25rem;
     word-break: keep-all;
+  }
+
+  .side-nav-arrow {
+    display: none;
   }
 
   /* Instructor Profile Mobile */
