@@ -144,7 +144,7 @@ document.addEventListener('DOMContentLoaded', () => {
         contactForm.reset();
 
         if (formFeedback) {
-          formFeedback.textContent = '🎉 교육 문의가 정상적으로 접수되었습니다. 24시간 이내에 강의 제안서 및 견적을 회신드리겠습니다!';
+          formFeedback.textContent = '교육 문의가 정상적으로 접수되었습니다. 24시간 이내에 강의 제안서 및 견적을 회신드리겠습니다.';
           formFeedback.className = 'form-feedback success';
 
           setTimeout(() => {
