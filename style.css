@@ -132,29 +132,45 @@ ul {
 }
 
 .brand-logo {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-weight: 800;
-  font-size: 1.15rem;
-  letter-spacing: -0.5px;
-}
-
-.logo-mark {
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  width: 32px;
-  height: 32px;
-  background: var(--brand-accent-gradient);
-  color: #fff;
-  border-radius: 8px;
-  font-weight: 900;
-  font-size: 0.95rem;
+  text-decoration: none;
 }
 
-.logo-text span {
-  color: var(--brand-blue);
+.brand-logo-img {
+  height: 38px;
+  width: auto;
+  max-width: 175px;
+  object-fit: contain;
+  display: block;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.brand-logo:hover .brand-logo-img {
+  transform: scale(1.02);
+}
+
+.footer-logo-img {
+  height: 34px;
+  width: auto;
+  max-width: 155px;
+  object-fit: contain;
+  display: block;
+}
+
+/* Theme Switching for Brand Logos */
+.logo-dark {
+  display: none !important;
+}
+.logo-light {
+  display: block !important;
+}
+
+body.theme-dark .logo-dark {
+  display: block !important;
+}
+body.theme-dark .logo-light {
+  display: none !important;
 }
 
 .nav-links {
@@ -2207,14 +2223,9 @@ body.theme-dark .btn-pill-primary {
     padding: 1rem;
   }
 
-  .brand-logo {
-    font-size: 1.05rem;
-  }
-
-  .logo-mark {
-    width: 28px;
-    height: 28px;
-    font-size: 0.85rem;
+  .brand-logo-img {
+    height: 32px;
+    max-width: 140px;
   }
 
   .header-actions {
