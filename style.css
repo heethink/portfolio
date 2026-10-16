@@ -280,9 +280,9 @@ body.theme-dark .btn-pill-primary {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: center;
-  opacity: 0.22;
-  filter: saturate(1.1) brightness(0.8);
+  object-position: center 35%;
+  opacity: 0.28;
+  filter: saturate(1.15) brightness(0.85);
   pointer-events: none;
   z-index: 1;
 }
@@ -997,6 +997,28 @@ body.theme-dark .btn-pill-primary {
   border-radius: 16px;
   padding: 2.25rem;
   position: relative;
+}
+
+.instructor-thumb-wrap {
+  width: 100%;
+  height: 200px;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 1.5rem;
+  border: 1px solid var(--border-line);
+  box-shadow: var(--shadow-sm);
+}
+
+.instructor-thumb-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 25%;
+  transition: transform 0.3s ease;
+}
+
+.about-quote-box:hover .instructor-thumb-img {
+  transform: scale(1.03);
 }
 
 .quote-symbol {
