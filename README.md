@@ -8,10 +8,13 @@
 - **저장소**: [https://github.com/heethink/portfolio](https://github.com/heethink/portfolio)
 
 ## ✨ 핵심 콘텐츠 & 기능
-- 🎯 **3대 대표 교육 과정**:
-  - 생성형 AI 업무 생산성 200% 극대화 (ChatGPT, Claude, Gemini 실무)
-  - 비개발자를 위한 AI 바이브코딩 & 웹 앱 완성 (Cursor, Claude Code, Vercel/GitHub Pages)
-  - 기업·기관 맞춤형 AI 에이전트 & AX 업무 자동화 워크플로우
+- 🎯 **6대 핵심 교육 과정**:
+  - 생성형 AI 기반 업무 생산성 극대화 (Office AX)
+  - 비개발자를 위한 자연어 기반 AI 바이브코딩 (Cursor & Claude Code)
+  - 노코드 AI 업무 자동화 & 워크플로우 구축 (Make, n8n, Automation)
+  - 생성형 AI 상업용 이미지 & 비주얼 브랜딩 (Midjourney, Flux)
+  - 생성형 AI 영상 제작 & 숏폼 미디어 마케팅 (Runway, Kling, Sora, ElevenLabs)
+  - 초·중·고 교직원 직무연수 & AI 전문 강사 양성과정
 - 🏢 **교육 사례 쇼케이스**: 16:9 현장 카드 (대기업 임직원 해커톤, 대학생 프로토타입 캠프, 공공기관 아카데미)
 - 🌓 **다크 / 라이트 모드**: CoreMate 스타일의 딥 다크 인빅(`--ink-950`, `#070b1a`)과 라이트 테마 지원
 - ♾️ **무한 롤링 마키 (Marquee)**: AI 도구 및 출강 도메인 슬라이더
